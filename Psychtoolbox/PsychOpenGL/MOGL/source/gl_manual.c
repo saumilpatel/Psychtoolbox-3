@@ -264,7 +264,7 @@ void gl_feedbackbuffer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs
   // Retrieve memory ptr from double argument:
   GLfloat* ptr = (GLfloat*) PsychDoubleToPtr((GLdouble) mxGetScalar(prhs[2]));
 
-  if (NULL == glFeedbackBuffer) mogl_glunsupported("glFeedbackBuffer");
+  if (NULL == &glFeedbackBuffer) mogl_glunsupported("glFeedbackBuffer");
 
   glFeedbackBuffer((GLsizei)mxGetScalar(prhs[0]),
            (GLenum)mxGetScalar(prhs[1]),
@@ -276,13 +276,13 @@ void gl_selectbuffer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
     // Retrieve memory ptr from double argument:
     GLuint* ptr = (GLuint*) PsychDoubleToPtr((GLdouble) mxGetScalar(prhs[1]));
 
-    if (NULL == glSelectBuffer) mogl_glunsupported("glSelectBuffer");
+    if (NULL == &glSelectBuffer) mogl_glunsupported("glSelectBuffer");
     glSelectBuffer((GLsizei)mxGetScalar(prhs[0]), ptr);
 }
 
 void gl_teximage2d( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
-    if (NULL == glTexImage2D) mogl_glunsupported("glTexImage2D");
+    if (NULL == &glTexImage2D) mogl_glunsupported("glTexImage2D");
     glTexImage2D((GLenum)mxGetScalar(prhs[0]),
         (GLint)mxGetScalar(prhs[1]),
         (GLenum)mxGetScalar(prhs[2]),
@@ -416,135 +416,135 @@ void gl_bufferdata( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 }
 
 void gl_readpixels( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-    if (NULL == glReadPixels) mogl_glunsupported("glReadPixels");
+    
+    if (NULL == &glReadPixels) mogl_glunsupported("glReadPixels");
     glReadPixels((GLint)mxGetScalar(prhs[0]),
-        (GLint)mxGetScalar(prhs[1]),
-        (GLsizei)mxGetScalar(prhs[2]),
-        (GLsizei)mxGetScalar(prhs[3]),
-        (GLenum)mxGetScalar(prhs[4]),
-        (GLenum)mxGetScalar(prhs[5]),
-        (GLvoid*) ((mxGetM(prhs[6]) * mxGetN(prhs[6]) > 1) ? mxGetData(prhs[6]) :  moglScalarToPtrOffset(prhs[6])));
-
+                 (GLint)mxGetScalar(prhs[1]),
+                 (GLsizei)mxGetScalar(prhs[2]),
+                 (GLsizei)mxGetScalar(prhs[3]),
+                 (GLenum)mxGetScalar(prhs[4]),
+                 (GLenum)mxGetScalar(prhs[5]),
+                 (GLvoid*) ((mxGetM(prhs[6]) * mxGetN(prhs[6]) > 1) ? mxGetData(prhs[6]) :  moglScalarToPtrOffset(prhs[6])));
+    
 }
 
 void gl_vertexpointer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-    if (NULL == glVertexPointer) mogl_glunsupported("glVertexPointer");
+    
+    if (NULL == &glVertexPointer) mogl_glunsupported("glVertexPointer");
     glVertexPointer((GLint)mxGetScalar(prhs[0]),
-        (GLenum)mxGetScalar(prhs[1]),
-        (GLsizei)mxGetScalar(prhs[2]),
-            (const GLvoid*) ((mxGetM(prhs[3]) * mxGetN(prhs[3]) > 1) ? mxGetData(prhs[3]) :  moglScalarToPtrOffset(prhs[3])));
-
+                    (GLenum)mxGetScalar(prhs[1]),
+                    (GLsizei)mxGetScalar(prhs[2]),
+                    (const GLvoid*) ((mxGetM(prhs[3]) * mxGetN(prhs[3]) > 1) ? mxGetData(prhs[3]) :  moglScalarToPtrOffset(prhs[3])));
+    
 }
 
 void gl_normalpointer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-    if (NULL == glNormalPointer) mogl_glunsupported("glNormalPointer");
+    
+    if (NULL == &glNormalPointer) mogl_glunsupported("glNormalPointer");
     glNormalPointer((GLenum)mxGetScalar(prhs[0]),
-        (GLsizei)mxGetScalar(prhs[1]),
-        (const GLvoid*) ((mxGetM(prhs[2]) * mxGetN(prhs[2]) > 1) ? mxGetData(prhs[2]) :  moglScalarToPtrOffset(prhs[2])));
-
+                    (GLsizei)mxGetScalar(prhs[1]),
+                    (const GLvoid*) ((mxGetM(prhs[2]) * mxGetN(prhs[2]) > 1) ? mxGetData(prhs[2]) :  moglScalarToPtrOffset(prhs[2])));
+    
 }
 
 void gl_texcoordpointer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-    if (NULL == glTexCoordPointer) mogl_glunsupported("glTexCoordPointer");
+    
+    if (NULL == &glTexCoordPointer) mogl_glunsupported("glTexCoordPointer");
     glTexCoordPointer((GLint)mxGetScalar(prhs[0]),
-        (GLenum)mxGetScalar(prhs[1]),
-        (GLsizei)mxGetScalar(prhs[2]),
-        (const GLvoid*) ((mxGetM(prhs[3]) * mxGetN(prhs[3]) > 1) ? mxGetData(prhs[3]) :  moglScalarToPtrOffset(prhs[3])));
-
+                      (GLenum)mxGetScalar(prhs[1]),
+                      (GLsizei)mxGetScalar(prhs[2]),
+                      (const GLvoid*) ((mxGetM(prhs[3]) * mxGetN(prhs[3]) > 1) ? mxGetData(prhs[3]) :  moglScalarToPtrOffset(prhs[3])));
+    
 }
 
 void gl_colorpointer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-    if (NULL == glColorPointer) mogl_glunsupported("glColorPointer");
+    
+    if (NULL == &glColorPointer) mogl_glunsupported("glColorPointer");
     glColorPointer((GLint)mxGetScalar(prhs[0]),
-        (GLenum)mxGetScalar(prhs[1]),
-        (GLsizei)mxGetScalar(prhs[2]),
-        (const GLvoid*) ((mxGetM(prhs[3]) * mxGetN(prhs[3]) > 1) ? mxGetData(prhs[3]) :  moglScalarToPtrOffset(prhs[3])));
-
+                   (GLenum)mxGetScalar(prhs[1]),
+                   (GLsizei)mxGetScalar(prhs[2]),
+                   (const GLvoid*) ((mxGetM(prhs[3]) * mxGetN(prhs[3]) > 1) ? mxGetData(prhs[3]) :  moglScalarToPtrOffset(prhs[3])));
+    
 }
 
 void gl_vertexattribpointer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
+    
     if (NULL == glVertexAttribPointer) mogl_glunsupported("glVertexAttribPointer");
     glVertexAttribPointer((GLuint)mxGetScalar(prhs[0]),
-        (GLint)mxGetScalar(prhs[1]),
-        (GLenum)mxGetScalar(prhs[2]),
-        (GLboolean)mxGetScalar(prhs[3]),
-        (GLsizei)mxGetScalar(prhs[4]),
-        (const GLvoid*) ((mxGetM(prhs[5]) * mxGetN(prhs[5]) > 1) ? mxGetData(prhs[5]) :  moglScalarToPtrOffset(prhs[5])));
-
+                          (GLint)mxGetScalar(prhs[1]),
+                          (GLenum)mxGetScalar(prhs[2]),
+                          (GLboolean)mxGetScalar(prhs[3]),
+                          (GLsizei)mxGetScalar(prhs[4]),
+                          (const GLvoid*) ((mxGetM(prhs[5]) * mxGetN(prhs[5]) > 1) ? mxGetData(prhs[5]) :  moglScalarToPtrOffset(prhs[5])));
+    
 }
 
 void gl_drawelements( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-    if (NULL == glDrawElements) mogl_glunsupported("glDrawElements");
+    
+    if (NULL == &glDrawElements) mogl_glunsupported("glDrawElements");
     glDrawElements((GLenum)mxGetScalar(prhs[0]),
-        (GLsizei)mxGetScalar(prhs[1]),
-        (GLenum)mxGetScalar(prhs[2]),
-        (const GLvoid*) ((mxGetM(prhs[3]) * mxGetN(prhs[3]) > 1) ? mxGetData(prhs[3]) :  moglScalarToPtrOffset(prhs[3])));
-
+                   (GLsizei)mxGetScalar(prhs[1]),
+                   (GLenum)mxGetScalar(prhs[2]),
+                   (const GLvoid*) ((mxGetM(prhs[3]) * mxGetN(prhs[3]) > 1) ? mxGetData(prhs[3]) :  moglScalarToPtrOffset(prhs[3])));
+    
 }
 
 void gl_drawrangeelements( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
+    
     if (NULL == glDrawRangeElements) mogl_glunsupported("glDrawRangeElements");
     glDrawRangeElements((GLenum)mxGetScalar(prhs[0]),
-        (GLuint)mxGetScalar(prhs[1]),
-        (GLuint)mxGetScalar(prhs[2]),
-        (GLsizei)mxGetScalar(prhs[3]),
-        (GLenum)mxGetScalar(prhs[4]),
-        (const GLvoid*) ((mxGetM(prhs[5]) * mxGetN(prhs[5]) > 1) ? mxGetData(prhs[5]) :  moglScalarToPtrOffset(prhs[5])));
-
+                        (GLuint)mxGetScalar(prhs[1]),
+                        (GLuint)mxGetScalar(prhs[2]),
+                        (GLsizei)mxGetScalar(prhs[3]),
+                        (GLenum)mxGetScalar(prhs[4]),
+                        (const GLvoid*) ((mxGetM(prhs[5]) * mxGetN(prhs[5]) > 1) ? mxGetData(prhs[5]) :  moglScalarToPtrOffset(prhs[5])));
+    
 }
 
 void glu_newtess( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
+    
     mogl_tess_struct* mytess;
-    if (NULL == gluNewTess) mogl_glunsupported("gluNewTess");
+    if (NULL == &gluNewTess) mogl_glunsupported("gluNewTess");
     plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-
+    
     // Create our own virtual tesselator struct:
     mytess = (mogl_tess_struct*) PsychCallocTemp(1, sizeof(mogl_tess_struct), 2);
-
+    
     // Alloc a gluTesselator and store its ptr inside our struct:
     mytess->glutesselator = gluNewTess();
-
+    
     // Don't need to init other parts of struct, as calloc() inits them to
     // all-zero, which is our wanted default.
-
+    
     // Assign ptr to our own struct as returned tesselator pointer:
     *(double*) mxGetData(plhs[0]) = PsychPtrToDouble((void*) mytess);
-
+    
 }
 
 void glu_deletetess( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
     // Define mytess struct pointer for this tesselator:
     MOGLDEFMYTESS;
-
-    if (NULL == gluDeleteTess) mogl_glunsupported("gluDeleteTess");
-
+    
+    if (NULL == &gluDeleteTess) mogl_glunsupported("gluDeleteTess");
+    
     // Destroy GLUtesselator:
     gluDeleteTess((GLUtesselator*) mytess->glutesselator);
-
+    
     // Release destructBuffers:
     PsychFreeAllTempMemory(3);
-
+    
     // Release our own data structure:
     PsychFreeTemp((void*) mytess, 2);
-
+    
 }
 
 void glu_tessbegincontour( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
+    
     MOGLDEFMYTESS;
-    if (NULL == gluTessBeginContour) mogl_glunsupported("gluTessBeginContour");
-
+    if (NULL == &gluTessBeginContour) mogl_glunsupported("gluTessBeginContour");
+    
     gluTessBeginContour((GLUtesselator*) mytess->glutesselator);
-
+    
 }
 
 void CALLCONV mogl_GLU_TESS_BEGIN_DATA(GLenum type, void* polygondata)
@@ -795,7 +795,7 @@ void glu_tessbeginpolygon( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 
     MOGLDEFMYTESS;
 
-    if (NULL == gluTessBeginPolygon) mogl_glunsupported("gluTessBeginPolygon");
+    if (NULL == &gluTessBeginPolygon) mogl_glunsupported("gluTessBeginPolygon");
 
     // Setup all tesselator callbacks for this polygon:
     MOGLSETTESSCALLBACK(GLU_TESS_BEGIN);
@@ -816,7 +816,7 @@ void glu_tessbeginpolygon( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 void glu_tessendcontour( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
     MOGLDEFMYTESS;
-    if (NULL == gluTessEndContour) mogl_glunsupported("gluTessEndContour");
+    if (NULL == &gluTessEndContour) mogl_glunsupported("gluTessEndContour");
 
     gluTessEndContour((GLUtesselator*) mytess->glutesselator);
 
@@ -825,7 +825,7 @@ void glu_tessendcontour( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prh
 void glu_tessendpolygon( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
     MOGLDEFMYTESS;
-    if (NULL == gluTessEndPolygon) mogl_glunsupported("gluTessEndPolygon");
+    if (NULL == &gluTessEndPolygon) mogl_glunsupported("gluTessEndPolygon");
 
     gluTessEndPolygon((GLUtesselator*) mytess->glutesselator);
     mytess->destructBuffer = NULL;
@@ -837,7 +837,7 @@ void glu_tessendpolygon( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prh
 void glu_tessnormal( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
     MOGLDEFMYTESS;
-    if (NULL == gluTessNormal) mogl_glunsupported("gluTessNormal");
+    if (NULL == &gluTessNormal) mogl_glunsupported("gluTessNormal");
 
     gluTessNormal((GLUtesselator*) mytess->glutesselator,
         (GLdouble)mxGetScalar(prhs[1]),
@@ -849,7 +849,7 @@ void glu_tessnormal( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 void glu_tessproperty( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
     MOGLDEFMYTESS;
-    if (NULL == gluTessProperty) mogl_glunsupported("gluTessProperty");
+    if (NULL == &gluTessProperty) mogl_glunsupported("gluTessProperty");
 
     gluTessProperty((GLUtesselator*) mytess->glutesselator,
         (GLenum)mxGetScalar(prhs[1]),
@@ -863,7 +863,7 @@ void glu_tessvertex( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
     MOGLDEFMYTESS;
     vdat = mogl_enqueueVertex(mytess, (mxArray*) prhs[2]);
 
-    if (NULL == gluTessVertex) mogl_glunsupported("gluTessVertex");
+    if (NULL == &gluTessVertex) mogl_glunsupported("gluTessVertex");
 
     gluTessVertex((GLUtesselator*) mytess->glutesselator,
         (GLdouble*)mxGetData(prhs[1]),
@@ -876,7 +876,7 @@ void glu_tesscallback( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 
     GLenum which;
     MOGLDEFMYTESS;
-    if (NULL == gluTessCallback) mogl_glunsupported("gluTessCallback");
+    if (NULL == &gluTessCallback) mogl_glunsupported("gluTessCallback");
 
     which = (GLenum)mxGetScalar(prhs[1]);
     switch(which) {
@@ -937,7 +937,7 @@ void glu_tesscallback( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 // GLES emulation wrapper wrappers:
 void gles_color4f( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
-    if (NULL == ftglColor4f) mogl_glunsupported("ftglColor4f");
+    if (NULL == &ftglColor4f) mogl_glunsupported("ftglColor4f");
     ftglColor4f((GLfloat)mxGetScalar(prhs[0]),
         (GLfloat)mxGetScalar(prhs[1]),
         (GLfloat)mxGetScalar(prhs[2]),
@@ -946,21 +946,21 @@ void gles_color4f( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) 
 
 void gles_texcoord2f( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
-    if (NULL == ftglTexCoord2f) mogl_glunsupported("ftglTexCoord2f");
+    if (NULL == &ftglTexCoord2f) mogl_glunsupported("ftglTexCoord2f");
     ftglTexCoord2f((GLfloat)mxGetScalar(prhs[0]),
         (GLfloat)mxGetScalar(prhs[1]));
 }
 
 void gles_vertex2f( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
-    if (NULL == ftglVertex2f) mogl_glunsupported("ftglVertex2f");
+    if (NULL == &ftglVertex2f) mogl_glunsupported("ftglVertex2f");
     ftglVertex2f((GLfloat)mxGetScalar(prhs[0]),
         (GLfloat)mxGetScalar(prhs[1]));
 }
 
 void gles_vertex3f( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
-    if (NULL == ftglVertex3f) mogl_glunsupported("ftglVertex3f");
+    if (NULL == &ftglVertex3f) mogl_glunsupported("ftglVertex3f");
     ftglVertex3f((GLfloat)mxGetScalar(prhs[0]),
         (GLfloat)mxGetScalar(prhs[1]),
         (GLfloat)mxGetScalar(prhs[2]));
@@ -968,13 +968,13 @@ void gles_vertex3f( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 
 void gles_begin( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
-    if (NULL == ftglBegin) mogl_glunsupported("ftglBegin");
+    if (NULL == &ftglBegin) mogl_glunsupported("ftglBegin");
     ftglBegin((GLenum)mxGetScalar(prhs[0]));
 }
 
 void gles_end( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
-    if (NULL == ftglEnd) mogl_glunsupported("ftglEnd");
+    if (NULL == &ftglEnd) mogl_glunsupported("ftglEnd");
     ftglEnd();
 }
 

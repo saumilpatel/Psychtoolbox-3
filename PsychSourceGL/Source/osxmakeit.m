@@ -85,10 +85,10 @@ if mode==3
 end
 
 if mode==4
-    % Depends: eyelink-SDK: eyelink_core.framework
-    % Build Eyelink:
-    mex -outdir ../Projects/MacOSX/build -output Eyelink -largeArrayDims -DMEX_DOUBLE_HANDLE -DPTBMODULE_Eyelink LDFLAGS="\$LDFLAGS -framework CoreServices -framework CoreFoundation -framework CoreAudio -framework eyelink_core" -I/usr/local/include -ICommon/Base -IOSX/Base -ICommon/Eyelink  "OSX/Base/*.c" "Common/Base/*.c" "Common/Eyelink/*.c"
-    unix(['mv ../Projects/MacOSX/build/Eyelink.' mexext ' ' PsychtoolboxRoot 'PsychBasic/']);
+%     % Depends: eyelink-SDK: eyelink_core.framework
+%     % Build Eyelink:
+%     mex -outdir ../Projects/MacOSX/build -output Eyelink -largeArrayDims -DMEX_DOUBLE_HANDLE -DPTBMODULE_Eyelink LDFLAGS="\$LDFLAGS -framework CoreServices -framework CoreFoundation -framework CoreAudio -framework eyelink_core" -I/usr/local/include -ICommon/Base -IOSX/Base -ICommon/Eyelink  "OSX/Base/*.c" "Common/Base/*.c" "Common/Eyelink/*.c"
+%     unix(['mv ../Projects/MacOSX/build/Eyelink.' mexext ' ' PsychtoolboxRoot 'PsychBasic/']);
 end
 
 if mode==5
@@ -169,10 +169,10 @@ if mode==12
 end
 
 if mode==14
-    % Build PsychOculusVRCore:
-    % Depends on Oculus VR SDK v0.5
-    mex -outdir ../Projects/MacOSX/build -output PsychOculusVRCore -largeArrayDims -DMEX_DOUBLE_HANDLE -DPTBMODULE_PsychOculusVRCore LDFLAGS="\$LDFLAGS -framework CoreServices -framework CoreFoundation -framework CoreAudio -framework LibOVR" -ICommon/Base -IOSX/Base -ICommon/PsychOculusVRCore -I/Library/Frameworks/LibOVR.framework/Versions/Current/Headers/ "OSX/Base/*.c" "Common/Base/*.c" "Common/PsychOculusVRCore/*.c"
-    unix(['mv ../Projects/MacOSX/build/PsychOculusVRCore.' mexext ' ' PsychtoolboxRoot 'PsychBasic/']);
+%     % Build PsychOculusVRCore:
+%     % Depends on Oculus VR SDK v0.5
+%     mex -outdir ../Projects/MacOSX/build -output PsychOculusVRCore -largeArrayDims -DMEX_DOUBLE_HANDLE -DPTBMODULE_PsychOculusVRCore LDFLAGS="\$LDFLAGS -framework CoreServices -framework CoreFoundation -framework CoreAudio -framework LibOVR" -ICommon/Base -IOSX/Base -ICommon/PsychOculusVRCore -I/Library/Frameworks/LibOVR.framework/Versions/Current/Headers/ "OSX/Base/*.c" "Common/Base/*.c" "Common/PsychOculusVRCore/*.c"
+%     unix(['mv ../Projects/MacOSX/build/PsychOculusVRCore.' mexext ' ' PsychtoolboxRoot 'PsychBasic/']);
 end
 
 return;

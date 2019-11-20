@@ -29,6 +29,7 @@
 // Need these includes to make setting display brightness work:
 #include <IOKit/graphics/IOGraphicsLib.h>
 # include <ApplicationServices/ApplicationServices.h>
+#include "IOServicePortFromCGDisplayID.c"
 
 /*
     The code for using System private interfaces (SPI's) for getting/setting display
@@ -243,7 +244,7 @@ PsychError SCREENConfigureDisplay(void)
         double nbrightness;
 
         PsychGetCGDisplayIDFromScreenNumber(&displayID, outputId);
-        io_service_t service = CGDisplayIOServicePort(displayID);
+        io_service_t service = IOServicePortFromCGDisplayID(displayID);
 
         // Return current brightness value: Prefer SPI (System private interface) for this,
         // as it isn't as fucked up as Apple's public implementation:

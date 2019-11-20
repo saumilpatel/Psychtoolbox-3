@@ -20,6 +20,8 @@
 */
 
 #include "Screen.h"
+#include "IOServicePortFromCGDisplayID.c"
+
 
 // If you change useString then also change the corresponding synopsis string in ScreenSynopsis.c
 static char useString[] = "[gammatable, dacbits, reallutsize] = Screen('ReadNormalizedGammaTable', windowPtrOrScreenNumber [, physicalDisplay]);";
@@ -123,7 +125,7 @@ PsychError SCREENReadNormalizedGammaTable(void)
 		PsychGetCGDisplayIDFromScreenNumber(&displayID, screenNumber);
 
 		// Retrieve low-level IOKit service port for this display:
-		displayService = CGDisplayIOServicePort(displayID);
+		displayService = IOServicePortFromCGDisplayID(displayID);
 
 		// Obtain the properties from that service
 		kr = IORegistryEntryCreateCFProperties(displayService, &properties, NULL, 0);

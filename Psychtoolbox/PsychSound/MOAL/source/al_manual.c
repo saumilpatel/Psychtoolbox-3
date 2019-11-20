@@ -24,7 +24,7 @@ void alc_ASASetListener( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prh
         fourcc[2]=rfourcc[1];
         fourcc[3]=rfourcc[0];
 
-        if (NULL == alcASASetListener) mogl_glunsupported("alcASASetListener");
+        if (NULL == &alcASASetListener) mogl_glunsupported("alcASASetListener");
         plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
         *mxGetPr(plhs[0])= (double) alcASASetListener((const ALuint) *ptype, (ALvoid *) mxGetData(prhs[1]), (ALuint) mxGetScalar(prhs[2]));
     #else
@@ -47,7 +47,7 @@ void alc_ASASetSource( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
         fourcc[2]=rfourcc[1];
         fourcc[3]=rfourcc[0];
 
-        if (NULL == alcASASetSource) mogl_glunsupported("alcASASetSource");
+        if (NULL == &alcASASetSource) mogl_glunsupported("alcASASetSource");
 
         plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
         *mxGetPr(plhs[0])= (double) alcASASetSource((const ALuint) *ptype, (ALuint) mxGetScalar(prhs[1]), (ALvoid *) mxGetData(prhs[2]), (ALuint) mxGetScalar(prhs[3]));
@@ -75,7 +75,7 @@ void alc_getintegerv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 
 void alc_getenumvalue( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
-    if (NULL == alcGetEnumValue) mogl_glunsupported("alcGetEnumValue");
+    if (NULL == &alcGetEnumValue) mogl_glunsupported("alcGetEnumValue");
     plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
     *mxGetPr(plhs[0])=(double)alcGetEnumValue(alcGetContextsDevice(alcGetCurrentContext()), (const ALchar*)mxGetData(prhs[0]));
 }
